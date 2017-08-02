@@ -1,8 +1,6 @@
-/**
- *  Range: 1-5
- *
- *  Find the missing element with a single loop.
- * */
+##  Find the missing element with a single loop.
+#### Range: 1-5 
+ 
 
 ```javascript
 
@@ -22,10 +20,9 @@ console.log(answer);
 ```
 
 
-/**
- * How to find first non repeated value of a given Array?
- * */
 
+ ## How to find first non repeated value of a given Array?
+ 
 ```javascript
 
 const array = [1, 2, 2, 23, 534 ,1, 32 ,2 ,3 ,6];
