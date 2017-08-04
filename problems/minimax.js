@@ -53,8 +53,6 @@ const isGridNice = (maxRn, minCn) => {
 
 const hashResult = (array) => {
   let obj = array.reduce((acc,elem,i) => {
-
-    console.log(`${i}: ${acc[elem.row]}`)
     if(acc[elem.row] === undefined){
       acc[elem.row] = 0;
     }else {
