@@ -103,7 +103,7 @@ let minimumRiS= (rIs(twoDimensionalArray));
 let maximumCiS = (cIs(twoDimensionalArray));
 let maxRi = Math.max.apply(null, minimumRiS);
 let minCi = Math.min.apply(null, maximumCiS);
-if(isGridNice(maxRi, minCi)){
+if(!isGridNice(maxRi, minCi)){
   let maxElems =(maximumElements(twoDimensionalArray));
   let result = findRows(maxElems, twoDimensionalArray);
   result = hashResult(result);
