@@ -21,9 +21,8 @@ const twoDimensionalArray = [
   [3 ,7, 5, 1],
   [2, 6, 9, 8],
   [11, 19, 20, 6],
-  [18, 0, 12, 21]
+  [18, 1, 12, 21]
 ];
-
 
 const rIs = (array) => {
   return array.map((rows) => {
@@ -50,13 +49,22 @@ const isGridNice = (maxRn, minCn) => {
   return maxRn == minCn;
 }
 
-let minimumRiS= (rIs(twoDimensionalArray));
-let maximumCiS = (cIs(twoDimensionalArray));
 
 
-let maxRi = Math.max.apply(null, minimumRiS);
-let minCi = Math.min.apply(null, maximumCiS);
+const hashResult = (array) => {
+  let obj = array.reduce((acc,elem,i) => {
 
+    console.log(`${i}: ${acc[elem.row]}`)
+    if(acc[elem.row] === undefined){
+      acc[elem.row] = 0;
+    }else {
+      acc[elem.row] += 1;
+    }
+    return acc;
+
+  },{});
+  return Object.keys(obj);
+};
 
 
 
@@ -67,9 +75,8 @@ const maximumElements = (array) => {
   });
 
   let maximumNumbers = [];
-  let maxNumbersRequired = array.length;
   let k = 0;
-  while(k < maxNumbersRequired){
+  while(k < array.length){
      const max = Math.max.apply(null, linear);
      maximumNumbers.push(max);
      linear.splice(linear.indexOf(max), 1);
@@ -79,6 +86,28 @@ const maximumElements = (array) => {
 
 };
 
+const findRows = (maxElems, array) => {
+  return maxElems.map((element) => {
+    for(i in array){
+      for(j in array) {
+        if(element === array[i][j]){
+          return {row: `${i++}`, col: `${j++}`, element: element}
+        }
+      }
+    }
+  });
+};
 
-console.log(isGridNice(maxRi, minCi));
-console.log(maximumElements(twoDimensionalArray));
+
+let minimumRiS= (rIs(twoDimensionalArray));
+let maximumCiS = (cIs(twoDimensionalArray));
+let maxRi = Math.max.apply(null, minimumRiS);
+let minCi = Math.min.apply(null, maximumCiS);
+if(isGridNice(maxRi, minCi)){
+  let maxElems =(maximumElements(twoDimensionalArray));
+  let result = findRows(maxElems, twoDimensionalArray);
+  result = hashResult(result);
+  console.log(`${ twoDimensionalArray.length - result.length } steps required.`);
+}else {
+  console.log(`No steps required. The grid is already nice.`);
+}
