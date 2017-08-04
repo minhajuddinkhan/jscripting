@@ -26,9 +26,9 @@ console.log(answer);
 
 # Problems from CodeChef too
 
-Let's consider a square grid with N rows and N columns, both numbered 1 through N. Each cell contains one integer. Let ri denote the minimum value in the i-th row, and let Ci denote the maximum value in the i-th column. A grid is called nice if and only if the following condition holds true:
+Let's consider a square grid with ```N rows``` and ```N columns```, both numbered 1 through N. Each cell contains one integer. Let ```ri``` denote the minimum value in the ```i-th row```, and let ```Ci``` denote the maximum value in the ```i-th column```. A grid is called nice if and only if the following condition holds true:
 
-max(r1, r2, ..., rN) = min(C1, C2, ..., CN)
+``` max(r1, r2, ..., rN) = min(C1, C2, ..., CN) ```
 
 Chef has a square grid and can change some of its elements (numbers in the cells). Find the minimum possible number of elements Chef should change, so that the new grid is nice.
 
