@@ -1,12 +1,12 @@
-Your task is to make two functions, max and min (maximum and minimum in PHP) that take a(n) array/vector of integers list as input and outputs, respectively, the largest and lowest number in that array/vector.
+### Your task is to make two functions, max and min (maximum and minimum in PHP) that take a(n) array/vector of integers list as input and outputs, respectively, the largest and lowest number in that array/vector.
 
  Examples
-
+```
  max([4,6,2,1,9,63,-134,566]) returns 566
  min([-52, 56, 30, 29, -54, 0, -110]) returns -110
  max([5]) returns 5
  min([42, 54, 65, 87, 0]) returns 0
-
+```
  You may consider that there will not be any empty arrays/vectors.
 
 ```javascript
@@ -22,7 +22,7 @@ const max = (array) => {
 console.log(`min :${min(array)}, max: ${max(array)}`);
 ```
 
-Define to_alternating_case(char*) such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase
+### Define ``` to_alternating_case(char*) ``` such that each lowercase letter becomes uppercase and each uppercase letter becomes lowercase
 
 ```javascript
 const string  = 'aBcD';
@@ -38,7 +38,7 @@ console.log(refactored);
 ```
 
 
-Write a function findNeedle() that takes an array full of junk but containing one "needle"
+### Write a function ``` findNeedle() ``` that takes an array full of junk but containing one "needle"
 
  After your function finds the needle it should return a message (as a string) that says:
 
@@ -67,17 +67,17 @@ index ? console.log(`found the needle at position ${index}`) : console.log('Not 
 ```
 
 
-Some people just have a first name; some people have first and last names and some people have first, middle and last names.
+### Some people just have a first name; some people have first and last names and some people have first, middle and last names.
 
  You task is to initialize the middle names (if there is any).
 
  For example,
-
+```
  'Jack Ryan' => 'Jack Ryan'
  'Lois Mary Lane' => 'Lois M. Lane'
  'Dimitri' => 'Dimitri'
  'Alice Betty Catherine Davis' => 'Alice B. C. Davis'
-
+```
 
 ```javascript
 const name = 'Alice Betty Catherine Davis';
@@ -98,7 +98,7 @@ console.log(filtered);
 ```
 
 
-Take an array and remove every second element out of that array. Always keep the first element and start removing with the next element.
+### Take an array and remove every second element out of that array. Always keep the first element and start removing with the next element.
 
  Example:
 
