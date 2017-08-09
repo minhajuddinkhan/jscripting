@@ -24,3 +24,6 @@
  He asks you to find the number of easy numbers represented in base b and consisting of exactly d digits.
  As the answer could be quite large, output it modulo 109 + 7.*/
 
+
+
+console.log((+3).toString(2));
