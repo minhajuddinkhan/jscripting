@@ -48,14 +48,27 @@ const input = `3 7 3
 const firstLine = input.split('\n')[0];
 
 
-function getMap  (input, firstLine) {
+function getMap (input, firstLine) {
   let map = [];
   for(let i = 1 ; i <= firstLine[0]; i++){
     map.push(input.split('\n')[i])
   }
-  return map;
+  return arrifyMap(map);
 
 };
+
+function arrifyMap(map) {
+
+  return map.map((row) => {
+     row = row.split(' ');
+     return row.reduce((acc, element) => {
+       acc.push(element);
+       return acc;
+     }, []);
+  })
+
+
+}
 
 function getQueries(input, firstLine){
   let queries = [];
@@ -65,14 +78,28 @@ function getQueries(input, firstLine){
   return queries;
 };
 
+function getMedian(map, maskI, maskJ) {
+  let linear = [];
+
+  for(let i = 0; i < maskI; i++ ){
+    for(let j = 0 ; j < maskJ; j++){
+      linear.push(map[i][j]);
+    }
+  }
+
+  return (linear.sort()[parseInt(linear.length/2)]);
+}
 
 
-let map = getMap(input, firstLine);
-let queries = getQueries(input, firstLine);
+let map = getMap(input, firstLine); // get map from the input in array form.
 
-console.log(queries);
+let queries = getQueries(input, firstLine); // require queries from the input in rows
 
-
+queries.map((query) => {
+  const maskI = query.split(' ')[0];
+  const maskJ = query.split(' ')[1];
+  console.log(getMedian(map, maskI, maskJ)); //print the median.
+});
 
 
 
