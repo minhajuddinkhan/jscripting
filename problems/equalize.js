@@ -18,7 +18,8 @@
  2 3 3 3 3 3 3 3 9
  3 3 3 3 3 3 3 3 7
  7 7 7 7 7 7 8 8 8
- Note that K and L are odd integers, so that the median is always an integer.
+ Note that K an
+ d L are odd integers, so that the median is always an integer.
 
  Chef wants to make all height values equal by repeatedly applying the equalize tool. Furthermore, he also wants the final (common) height to be as large as possible. What is the maximum final (common) height that he can obtain?
 
@@ -32,11 +33,19 @@
  The following Q lines describe the queries. The jth line contains two integers, Kj and Lj.
 
  Output
- For each query, output a single integer, the maximum final (common) height that Chef can obtain, assuming the size of the equalize tool is Kj × Lj.
+ For each query, output a single integer, the maximum final (common) height that Chef can obtain,
+ assuming the size of the equalize tool is Kj × Lj.
  */
 
 
-let array = [1, 1, 4 ,4, 5, 2, 4,3, 1, 2, 1, 2, 1, 1,2, 8, 8, 9, 9, 7, 7];
+const input = `3 7 3
+8 5 5 5 8 6 8
+8 9 5 5 5 9 8
+8 6 8 5 5 5 8
+3 3
+3 5
+3 7`;
 
-array = array.sort();
-console.log(array[ parseInt(array.length/2)]);
+const heights = input.split('\n');
+console.log(heights);
+
