@@ -45,7 +45,50 @@ const input = `3 7 3
 3 3
 3 5
 3 7`;
+const firstLine = input.split('\n')[0];
 
-const heights = input.split('\n');
-console.log(heights);
+
+function getMap  (input, firstLine) {
+  let map = [];
+  for(let i = 1 ; i <= firstLine[0]; i++){
+    map.push(input.split('\n')[i])
+  }
+  return map;
+
+};
+
+function getQueries(input, firstLine){
+  let queries = [];
+  for(let i = parseInt(firstLine[0]) + 1 ; i < input.split('\n').length; i++){
+    queries.push(input.split('\n')[i]);
+  }
+  return queries;
+};
+
+
+
+let map = getMap(input, firstLine);
+let queries = getQueries(input, firstLine);
+
+console.log(queries);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
