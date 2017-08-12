@@ -1,5 +1,7 @@
-/** Statement:
- Write a program that will help to identify the number of bridges in a graph.
+# Graphs are cool
+
+### Write a program that will help to identify the number of bridges in a graph.
+
  Consider a graph of X vertices, labeled as 0 to X - 1.
  At the start, graph has no edge.Later on undirected edges (u, v) are added to the graph (0 <= u, v <= X - 1).
  After adding an edge, you must print out the current number of bridges in the graph.
@@ -11,9 +13,9 @@
  followed by L lines, each line contains a pair of integers (u, v) that represents a request
  to add an edge (u, v) to the graph.
  Output:
- After each request, print out the current number of bridges in the graph on a separate line. */
+ After each request, print out the current number of bridges in the graph on a separate line.
 
-
+```javascript
 function createInitialMatrix(rows, columns) {
     let matrix = [];
 
@@ -129,4 +131,4 @@ queries.map((query) => {
 
 })
 
-
+```
