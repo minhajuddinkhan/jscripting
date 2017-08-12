@@ -14,85 +14,23 @@ Output:
 After each request, print out the current number of bridges in the graph on a separate line. */
 
 
+function createInitialMatrix(rows, columns) {
+   let matrix = [];
 
-class Node{
-
-    constructor(value){
-        this.connectsWith = [];
-        this.value = value;
-    }
-    connectWith(Node){
-        this.connectsWith.push(Node);
-    }
-    getConnections() {
-        return this.connectsWith;
-    }
-    hasNodeInConnection(node) {
-
-        return this.connectsWith.length ? this.connectsWith.find((Node) => {
-              return node === Node.value
-           } ) !== null : false ;
-    }
-}
-class Graph {
-
-    constructor(nodeMap){
-        this.nodeMap = nodeMap;
-    }
-    joinNode(nodes){
-        nodes = nodes.split(' ');
-        this.nodeMap[nodes[0]].connectWith(this.nodeMap[nodes[1]]);
-    }
-
-    getBridges() {
-
-        let returnBacks= [];
-            let connectInitiator = this.nodeMap[2];     // connectInitiator = node: 1
-            let connections = connectInitiator.getConnections(); //connections = [ 2 ]
-            returnBacks = connections.map((connection) => {
-                return find(connection, connectInitiator);
-            });
-
-            function find(current, nodeToFind) {
-                    console.log(current.hasNodeInConnection(nodeToFind));
-                if(current.hasNodeInConnection(nodeToFind)){
-                    return true;
-                }else{
-                    let childConnections = current.getConnections();
-                    if(childConnections.length){
-                        for (let i = 0; i < current.getConnections().length; i++){
-                            return find(current.getConnections()[i])
-                        }
-                    }else{
-                        return false;
-                    }
-
-                }
-            }
+    for(let i = 0; i< rows; i++){
+        let row = [];
+        matrix.push(row);
+        for(let j = 0; j < columns; j++){
+            matrix[i].push(0);
         }
-}
-
-function createInitialGraph(nodes){
-    let graphMap = {};
-    for(let i= 1; i <= nodes; i++) {
-        graphMap[i] = new Node(i);
     }
-    return new Graph(graphMap);
+    return matrix;
+
 }
 
+const input = `3
+1 2`;
 
-
-/**  Execution Here*/
-
-let nodes = 3;
-let inputs = ['1 2' ,'2 3', '3 1'];
-
-let graph = createInitialGraph(nodes);
-graph.joinNode(inputs[0]);
-graph.joinNode(inputs[1]);
-graph.getBridges();
-
-
-
-
-
+const numberOfVertices = input.split('\n')[0];
+const queries = input.split('\n').map((row, i) => input.split('\n')[i+1]).filter((row) => !!row);
+let matrix = (createInitialMatrix(numberOfVertices, numberOfVertices));
