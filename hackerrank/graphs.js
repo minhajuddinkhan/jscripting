@@ -29,9 +29,27 @@ function createInitialMatrix(rows, columns) {
 }
 
 function getNumberOfBridges(matrix) {
-    console.log(matrix);
-    return -1;
+    let edges = findEdges(matrix);
+    console.log(edges);
+
+   return -1;
 }
+
+function findEdges(matrix) {
+    let edges = [];
+    for(let i = 0; i< matrix.length; i++){
+        for(let j = 0; j < matrix.length; j++){
+
+            if(matrix[i][j] === 1){
+                if(!edges.find((o) => o.split("").reverse().join("") === `${i} ${j}`))
+                edges.push(`${i} ${j}`)
+            }
+
+        }
+    }
+    return edges;
+}
+
 
 function joinEdge(vX, vY) {
     matrix[vX][vY]= 1;
@@ -52,5 +70,4 @@ let result = queries.map((query) => {
     return getNumberOfBridges(matrix);
 });
 
-console.log(result);
 
