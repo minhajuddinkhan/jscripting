@@ -13,6 +13,7 @@
  Output:
  After each request, print out the current number of bridges in the graph on a separate line. */
 
+let times = 0;
 
 function createInitialMatrix(rows, columns) {
     let matrix = [];
@@ -30,8 +31,9 @@ function createInitialMatrix(rows, columns) {
 
 function getNumberOfBridges(matrix) {
     let edges = findEdges(matrix);
-    return edges.map((edge) => { //true means the edge was a bridge.
-        let mutated =  getMutatedMatrix(matrix, edge);
+    return edges.map((edge,i) => { //true means the edge was a bridge.
+
+        let mutated =  getMutatedMatrix(JSON.parse(JSON.stringify(matrix)), edge);
         let  { rowE1, rowE2 } = readByRow(mutated, edge);
         let { columnE1, columnE2 } = readByColumn(mutated, edge);
         if(rowE1 === 0 && rowE2 === 0 && columnE1 === 0 && columnE1 === 0 ){
@@ -80,6 +82,7 @@ function readByColumn(mutatedMatrix, edge) {
     }
 }
 function findEdges(matrix) {
+    console.log(matrix);
     let edges = [];
     for(let i = 0; i< matrix.length; i++){
         for(let j = 0; j < matrix.length; j++){
@@ -121,6 +124,8 @@ const queries = input.split('\n').map((row, i) => input.split('\n')[i+1]).filter
 let matrix = (createInitialMatrix(numberOfVertices, numberOfVertices));
 
 joinEdge.apply(null, queries[0].split(' '));
-console.log(getNumberOfBridges(matrix).length);
+console.log(getNumberOfBridges(matrix));
+joinEdge.apply(null, queries[1].split(' '));
+console.log(getNumberOfBridges(matrix));
 
 
