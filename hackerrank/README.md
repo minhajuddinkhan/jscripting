@@ -7,6 +7,12 @@
  After adding an edge, you must print out the current number of bridges in the graph.
 
  N.B: For test case,  an edge that is already added will not be added again, nor will there be a self-loop
+  In graph theory, a bridge, isthmus, cut-edge, or cut arc is an edge of a graph whose deletion increases its number of connected components. Equivalently, an edge is a bridge if and only if it is not contained in any cycle.
+
+### what the heck is a bridge?
+A bridge of a connected graph is ah edge whose removal disconnects the graph
+(breaks one into multiple graphs) 
+
 
 ##### Input:
 
