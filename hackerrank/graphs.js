@@ -31,16 +31,18 @@ function createInitialMatrix(rows, columns) {
 
 function getNumberOfBridges(matrix) {
     let edges = findEdges(matrix);
-    return edges.map((edge,i) => { //true means the edge was a bridge.
+    console.log(matrix);
+    console.log('matrix=============');
+    return edges.map((edge) => { //true means the edge was a bridge.
 
+        console.log('breaking edge', edge);
         let mutated =  getMutatedMatrix(JSON.parse(JSON.stringify(matrix)), edge);
+        console.log(mutated);
+        console.log('muatated==============');
+
         let  { rowE1, rowE2 } = readByRow(mutated, edge);
+        console.log('read by rowws of edge  '+ edge+ ' is ' , rowE1, rowE2);
         let { columnE1, columnE2 } = readByColumn(mutated, edge);
-        if(rowE1 === 0 && rowE2 === 0 && columnE1 === 0 && columnE1 === 0 ){
-            return true;
-        }else{
-            return false;
-        }
     });
 }
 
@@ -82,7 +84,6 @@ function readByColumn(mutatedMatrix, edge) {
     }
 }
 function findEdges(matrix) {
-    console.log(matrix);
     let edges = [];
     for(let i = 0; i< matrix.length; i++){
         for(let j = 0; j < matrix.length; j++){
@@ -123,9 +124,10 @@ const numberOfVertices = input.split('\n')[0];
 const queries = input.split('\n').map((row, i) => input.split('\n')[i+1]).filter((row) => !!row);
 let matrix = (createInitialMatrix(numberOfVertices, numberOfVertices));
 
-joinEdge.apply(null, queries[0].split(' '));
-console.log(getNumberOfBridges(matrix));
-joinEdge.apply(null, queries[1].split(' '));
-console.log(getNumberOfBridges(matrix));
+queries.map((query) => {
+    joinEdge.apply(null, query.split(' '));
+    (getNumberOfBridges(matrix));
+
+})
 
 
