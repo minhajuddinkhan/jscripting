@@ -30,11 +30,55 @@ function createInitialMatrix(rows, columns) {
 
 function getNumberOfBridges(matrix) {
     let edges = findEdges(matrix);
-    console.log(edges);
-
-   return -1;
+    return edges.map((edge) => { //true means the edge was a bridge.
+        let mutated =  getMutatedMatrix(matrix, edge);
+        let  { rowE1, rowE2 } = readByRow(mutated, edge);
+        let { columnE1, columnE2 } = readByColumn(mutated, edge);
+        if(rowE1 === 0 && rowE2 === 0 && columnE1 === 0 && columnE1 === 0 ){
+            return true;
+        }else{
+            return false;
+        }
+    });
 }
 
+
+function readByRow(mutatedMatrix, edge) {
+
+    let rowE1 = mutatedMatrix[edge.split(" ")[0]];
+    let rowE2 = mutatedMatrix[edge.split(" ")[1]];
+
+    rowE1 = rowE1.reduce((acc, elem) => acc + elem, 0);
+    rowE2 = rowE2.reduce((acc, elem) => acc + elem, 0);
+
+    return {
+        rowE1,
+        rowE2
+    }
+}
+
+function readByColumn(mutatedMatrix, edge) {
+
+    const c1 = edge.split(" ")[0];
+    const c2 = edge.split(" ")[1];
+
+    let columnE1 = [];
+    let columnE2 = [];
+
+
+    for(let i = 0; i < mutatedMatrix.length; i++){
+        columnE1.push(mutatedMatrix[i][c1]);
+        columnE2.push(mutatedMatrix[i][c2]);
+    }
+
+    columnE1  = columnE1.reduce((acc, elem) => acc + elem, 0);
+    columnE2 = columnE2.reduce((acc, elem) => acc + elem, 0);
+
+    return {
+        columnE1,
+        columnE2
+    }
+}
 function findEdges(matrix) {
     let edges = [];
     for(let i = 0; i< matrix.length; i++){
@@ -42,12 +86,21 @@ function findEdges(matrix) {
 
             if(matrix[i][j] === 1){
                 if(!edges.find((o) => o.split("").reverse().join("") === `${i} ${j}`))
-                edges.push(`${i} ${j}`)
+                    edges.push(`${i} ${j}`)
             }
 
         }
     }
     return edges;
+}
+
+function getMutatedMatrix(matrix, edge) {
+
+    const vX = edge.split(" ")[0];
+    const vY = edge.split(" ")[1];
+    matrix[vX][vY]= 0;
+    matrix[vY][vX]= 0;
+    return matrix;
 }
 
 
@@ -58,16 +111,16 @@ function joinEdge(vX, vY) {
 
 }
 
+
 const input = `3
-0 1`;
+0 1
+1 2`;
 
 const numberOfVertices = input.split('\n')[0];
 const queries = input.split('\n').map((row, i) => input.split('\n')[i+1]).filter((row) => !!row);
 let matrix = (createInitialMatrix(numberOfVertices, numberOfVertices));
 
-let result = queries.map((query) => {
-    joinEdge.apply(null, query.split(' '));
-    return getNumberOfBridges(matrix);
-});
+joinEdge.apply(null, queries[0].split(' '));
+console.log(getNumberOfBridges(matrix).length);
 
 
