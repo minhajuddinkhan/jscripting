@@ -1,4 +1,4 @@
-## ```1``` Equalize
+## ```Q1``` Equalize
 ####  Chef is creating a map for a certain real-time strategy video game. 
 
 In this game, a map is a ```2D rectangle of dimensions N × M ``` tiles. 
@@ -213,7 +213,7 @@ queries.map((query) => {
 ```
 
 
-# MinMax
+# ```Q2``` MinMax
 ```javascript
 
 /**
