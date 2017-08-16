@@ -92,7 +92,6 @@ function getMedian(map, maskI, maskJ) {
 
 
 let map = getMap(input, firstLine); // get map from the input in array form.
-
 let queries = getQueries(input, firstLine); // require queries from the input in rows
 
 queries.map((query) => {
