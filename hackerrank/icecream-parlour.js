@@ -1,10 +1,10 @@
 /**
-*
-*
-* Each time Sunny and Johnny take a trip to the Ice Cream Parlor, they pool together  dollars for ice cream.
-* https://www.hackerrank.com/challenges/icecream-parlor
-*
-*/
+ *
+ *
+ * Each time Sunny and Johnny take a trip to the Ice Cream Parlor, they pool together  dollars for ice cream.
+ * https://www.hackerrank.com/challenges/icecream-parlor
+ *
+ */
 const input = `2
 4
 5
@@ -28,48 +28,35 @@ function getTours(input) {
   return tours;
 }
 
-let tours = getTours(input);
-
-tours.forEach((tour) => {
-
-  ///console.log(fetchSelections(tour.varities.split(' '), tour.pool));
-});
+getTours(input)
+  .map((tour) => twoSum(tour.varities.split(' ').map((elem) => +elem), +tour.pool))
+  .map((elem) => `${ elem[0]} ${elem[1]}`)
+  .forEach((elem) => console.log(elem));
 
 
 
-function fetchSelections(array, sum) {
-
-
-/*
-  let hash = array.reduce((acc, elem, i) => {
-    acc[elem] = i;
-    return acc;
-  }, {});
-
-  for (let i = 0; i < array.length; i++) {
-    if (hash[sum - array[i]] != i) {
-      console.log(`${i + 1} ${ parseInt(array[hash[sum - array[i]]]) + 1}`);
+function twoSum(nums, target_num) {
+  let map = [];
+  let indexnum = [];
+  let x;
+  for (x = 0; x < nums.length; x++)
+  {
+    if (map[nums[x]] != null)
+    {
+      index = map[nums[x]];
+      indexnum[0] = index+1;
+      indexnum[1] = x+1;
       break;
-
+    }
+    else
+    {
+      map[target_num - nums[x]] = x;
     }
   }
-*/
+  return indexnum;
 }
 
 
-
-let yolo = [1, 4, 5, 3, 2];
-
-
-let res = yolo.map(() => {
-  let yolo2 = (JSON.parse(JSON.stringify(yolo)))
-  yolo2.push(yolo2[0]);
-  yolo2.splice(0,1);
-  yolo = yolo2;
-  return yolo2;
-});
-
-console.log(res);
 
 
 
